@@ -36,7 +36,7 @@ class Testador < Test::Unit::TestCase
    end
    
    def test_aleatorios_entre_101_a_999
-     lista = {101 => "cento e um", 205 => "duzentos e cinco", 666 => "seiscentos e sessenta e seis", 709 => "setecentos e nove", 847 => "oitocentos e quarenta e sete", 935 => "novecentos e trinta e cinco"}
+     lista = {101 => "cento e um", 114 => "cento e quatorze", 205 => "duzentos e cinco", 666 => "seiscentos e sessenta e seis", 709 => "setecentos e nove", 847 => "oitocentos e quarenta e sete", 935 => "novecentos e trinta e cinco"}
      testa_lista(lista)
    end
 
