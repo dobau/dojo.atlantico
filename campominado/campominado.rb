@@ -1,9 +1,13 @@
-#
+=begin
 # Desafio do campo minado
 #
 # @link http://www.programming-challenges.com/pg.php?page=downloadproblem&probid=110102&format=html
-# @author Rafael Alves, Arian Maykon e Wesley Jefferson
+#
+# @author Rafael Alves,
+#         Arian Maykon,
+#         Wesley Jefferson
 # @since 24/08/2010
+=end
 class CampoMinado
 
 	attr_accessor :mina
@@ -22,6 +26,12 @@ class CampoMinado
 		@mina[x][y] = '*'
 	end
 	
+	def adicionaMinas(posicoes)
+		posicoes.each do |posicao|
+			@mina[posicao[0]][posicao[1]] = '*'
+		end
+	end
+	
 	def processa()
 		@mina.each_index do |i|
 			@mina[i].each_index do |j|
@@ -34,13 +44,24 @@ class CampoMinado
 		if (@mina[i][j] == '.')
 			@mina[i][j] = 0
 
-			@mina[i][j] += 1 if (j > 0 && @mina[i][j-1] == '*')
-			@mina[i][j] += 1 if (j+1 < @mina[i].length && @mina[i][j+1] == '*')
-
-			@mina[i][j] += 1 if (i > 0 && @mina[i-1][j] == '*')
-			@mina[i][j] += 1 if (i+1 < @mina.length && @mina[i+1][j] == '*')
+			@mina[i][j] += 1 if (tem_bomba(i-1, j-1))
+			@mina[i][j] += 1 if (tem_bomba(i-1, j))
+			@mina[i][j] += 1 if (tem_bomba(i-1, j+1))
+			@mina[i][j] += 1 if (tem_bomba(i, j-1))
+			@mina[i][j] += 1 if (tem_bomba(i, j+1))
+			@mina[i][j] += 1 if (tem_bomba(i+1, j-1))
+			@mina[i][j] += 1 if (tem_bomba(i+1, j))
+			@mina[i][j] += 1 if (tem_bomba(i+1, j+1))
 
 			@mina[i][j] = @mina[i][j].to_s
+		end
+	end
+	
+	def tem_bomba(i,j)
+		if (i >= 0 && i < mina.length && j >= 0 && j < mina[i].length)
+			@mina[i][j] == '*'
+		elsif
+			false
 		end
 	end
 
